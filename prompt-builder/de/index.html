@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tipsy Prompt Builder</title>
+<title>Tipsy Prompt-Generator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Prata&family=Caveat:wght@400;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -507,67 +507,67 @@ textarea { min-height: 80px; }
 <body>
 
 <header>
-  <h1>Tipsy Prompt Builder</h1>
-  <span>v1.4 — exports four-field prompt as .txt</span>
-  <a class="header-link" href="../prompt-builder/omegaverse/">Omegaverse ↗</a>
-  <a class="header-link" href="../prompt-builder/es/">Español ↗</a>
-  <a class="header-link" href="../prompt-builder/de/">Deutsch ↗</a>
+  <h1>Tipsy Prompt-Generator</h1>
+  <span>v1.4 — exportiert Vier-Felder-Prompt als .txt</span>
+  <a class="header-link" href="../">English ↗</a>
+  <a class="header-link" href="../omegaverse/">Omegaverse ↗</a>
+  <a class="header-link" href="../es/">Español ↗</a>
 </header>
 
 <div class="layout">
   <nav class="sidebar">
     <div class="nav-section">
-      <div class="nav-section-label">Fields</div>
+      <div class="nav-section-label">Felder</div>
       <button class="nav-item active" onclick="showPanel('name', this)">
         <div class="nav-dot"></div> Name
-        <span class="badge req">required</span>
+        <span class="badge req">erforderlich</span>
       </button>
       <button class="nav-item" onclick="showPanel('desc', this)">
-        <div class="nav-dot"></div> Description
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Beschreibung
+        <span class="badge req">erforderlich</span>
       </button>
       <button class="nav-item" onclick="showPanel('opening', this)">
-        <div class="nav-dot"></div> Opening
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Eröffnung
+        <span class="badge req">erforderlich</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Instructions</div>
+      <div class="nav-section-label">Anweisungen</div>
       <button class="nav-item" onclick="showPanel('pacing', this)">
-        <div class="nav-dot"></div> Pacing rules
+        <div class="nav-dot"></div> Pacing-Regeln
         <span class="badge opt">optional</span>
       </button>
       <button class="nav-item" onclick="showPanel('setting', this)">
         <div class="nav-dot"></div> Setting
-        <span class="badge req">required</span>
+        <span class="badge req">erforderlich</span>
       </button>
       <button class="nav-item" onclick="showPanel('roleplay', this)">
-        <div class="nav-dot"></div> Roleplay rules
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Rollenspiel-Regeln
+        <span class="badge req">erforderlich</span>
       </button>
       <button class="nav-item" onclick="showPanel('factions', this)">
-        <div class="nav-dot"></div> Factions
+        <div class="nav-dot"></div> Fraktionen
         <span class="badge opt">optional</span>
       </button>
       <button class="nav-item" onclick="showPanel('characters', this)">
-        <div class="nav-dot"></div> Characters
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Charaktere
+        <span class="badge req">erforderlich</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Trackers</div>
+      <div class="nav-section-label">Tracker</div>
       <button class="nav-item" onclick="showPanel('trackers-vis', this)">
-        <div class="nav-dot"></div> Visible trackers
-        <span class="badge vis">visible</span>
+        <div class="nav-dot"></div> Sichtbare Tracker
+        <span class="badge vis">sichtbar</span>
       </button>
       <button class="nav-item" onclick="showPanel('trackers-hid', this)">
-        <div class="nav-dot"></div> Hidden trackers
-        <span class="badge hid">hidden</span>
+        <div class="nav-dot"></div> Versteckte Tracker
+        <span class="badge hid">versteckt</span>
       </button>
       <button class="nav-item" onclick="showPanel('trackers-hyb', this)">
-        <div class="nav-dot"></div> Hybrid trackers
+        <div class="nav-dot"></div> Hybride Tracker
         <span class="badge hyb">hybrid</span>
       </button>
     </div>
@@ -575,19 +575,19 @@ textarea { min-height: 80px; }
     <div class="nav-section">
       <div class="nav-section-label">Add-ons</div>
       <button class="nav-item" onclick="showPanel('memory', this)">
-        <div class="nav-dot"></div> Memory system
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Gedächtnissystem
+        <span class="badge req">erforderlich</span>
       </button>
       <button class="nav-item" onclick="showPanel('timeskip', this)">
-        <div class="nav-dot"></div> Time skip engine
-        <span class="badge req">required</span>
+        <div class="nav-dot"></div> Zeitsprung-Engine
+        <span class="badge req">erforderlich</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Output</div>
+      <div class="nav-section-label">Ausgabe</div>
       <button class="nav-item" onclick="showPanel('export', this)">
-        <div class="nav-dot"></div> Export prompt ↗
+        <div class="nav-dot"></div> Prompt exportieren ↗
       </button>
     </div>
   </nav>
@@ -599,13 +599,13 @@ textarea { min-height: 80px; }
       <div class="field-block">
         <div class="field-header">
           <span class="field-label">Name</span>
-          <span class="field-tag f-name">Name field</span>
-          <span class="badge req">required</span>
+          <span class="field-tag f-name">Name-Feld</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">Published title. Appears on the storefront card and nameplate. Short, specific, searchable. Not seen by the model.</p>
+        <p class="field-note">Veröffentlichter Titel. Erscheint auf der Storefront-Karte und dem Namensschild. Kurz, spezifisch, suchbar. Wird vom Modell nicht gesehen.</p>
         <div class="input-group">
-          <label class="input-label">Chatbot title</label>
-          <input type="text" id="f-name" placeholder="Title" oninput="updatePreview()">
+          <label class="input-label">Chatbot-Titel</label>
+          <input type="text" id="f-name" placeholder="Titel" oninput="updatePreview()">
         </div>
       </div>
     </div>
@@ -614,31 +614,31 @@ textarea { min-height: 80px; }
     <div id="panel-desc" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Description</span>
-          <span class="field-tag f-desc">Description field</span>
-          <span class="badge req">required</span>
+          <span class="field-label">Beschreibung</span>
+          <span class="field-tag f-desc">Beschreibungsfeld</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">Appears on the nameplate and before the opening message. Hook copy + tagline. SEO-relevant. Not seen by the model.</p>
+        <p class="field-note">Erscheint auf dem Namensschild und vor der Eröffnungsnachricht. Hook-Text + Tagline. SEO-relevant. Wird vom Modell nicht gesehen.</p>
 
         <div class="input-group">
-          <label class="input-label">Hook sentence</label>
-          <span class="input-hint">The world, the stakes, or the dynamic in one line.</span>
-          <input type="text" id="desc-hook1" placeholder="The city doesn't forgive debts — it just waits for the right moment to collect." oninput="updatePreview()">
+          <label class="input-label">Hook-Satz</label>
+          <span class="input-hint">Die Welt, die Einsätze oder die Dynamik in einer Zeile.</span>
+          <input type="text" id="desc-hook1" placeholder="Die Stadt vergibt keine Schulden — sie wartet nur auf den richtigen Moment, sie einzutreiben." oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Second sentence</label>
-          <span class="input-hint">Who {{user}} is in this world, or what pulls them in.</span>
-          <input type="text" id="desc-hook2" placeholder="You've just walked into a room where everyone already knows your name." oninput="updatePreview()">
+          <label class="input-label">Zweiter Satz</label>
+          <span class="input-hint">Wer {{user}} in dieser Welt ist, oder was sie hineinzieht.</span>
+          <input type="text" id="desc-hook2" placeholder="Du hast gerade einen Raum betreten, in dem jeder deinen Namen schon kennt." oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Third sentence <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-          <span class="input-hint">The tension or question the story will orbit.</span>
-          <input type="text" id="desc-hook3" placeholder="Some debts can't be paid — only passed on." oninput="updatePreview()">
+          <label class="input-label">Dritter Satz <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+          <span class="input-hint">Die Spannung oder Frage, um die sich die Geschichte dreht.</span>
+          <input type="text" id="desc-hook3" placeholder="Manche Schulden lassen sich nicht begleichen — nur weitergeben." oninput="updatePreview()">
         </div>
 
         <div class="input-group">
-          <label class="input-label">Tag delimiter</label>
-          <span class="input-hint">Symbol used between tags in the tagline.</span>
+          <label class="input-label">Tag-Trennzeichen</label>
+          <span class="input-hint">Symbol zwischen den Tags in der Tagline.</span>
           <div class="delim-picker" id="delim-picker"></div>
         </div>
 
@@ -647,11 +647,11 @@ textarea { min-height: 80px; }
           <div class="tag-builder">
             <div class="tag-grid">
               <div>
-                <div class="tag-group-label">Dynamic</div>
+                <div class="tag-group-label">Dynamik</div>
                 <div class="tag-chips" id="tags-dynamic"></div>
               </div>
               <div>
-                <div class="tag-group-label">Tone</div>
+                <div class="tag-group-label">Ton</div>
                 <div class="tag-chips" id="tags-tone"></div>
               </div>
               <div>
@@ -659,16 +659,16 @@ textarea { min-height: 80px; }
                 <div class="tag-chips" id="tags-setting"></div>
               </div>
               <div>
-                <div class="tag-group-label">Cast</div>
+                <div class="tag-group-label">Besetzung</div>
                 <div class="tag-chips" id="tags-cast"></div>
               </div>
               <div style="grid-column:1/-1">
-                <div class="tag-group-label">Plot &amp; Content</div>
+                <div class="tag-group-label">Handlung &amp; Inhalt</div>
                 <div class="tag-chips" id="tags-plot"></div>
               </div>
             </div>
-            <div class="tag-group-label" style="margin-bottom:.3rem">Preview</div>
-            <div class="tag-preview" id="tag-preview">[select tags above]</div>
+            <div class="tag-group-label" style="margin-bottom:.3rem">Vorschau</div>
+            <div class="tag-preview" id="tag-preview">[Tags oben auswählen]</div>
           </div>
         </div>
       </div>
@@ -678,35 +678,35 @@ textarea { min-height: 80px; }
     <div id="panel-opening" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Opening</span>
-          <span class="field-tag f-open">Opening field</span>
-          <span class="badge req">required</span>
+          <span class="field-label">Eröffnung</span>
+          <span class="field-tag f-open">Eröffnungsfeld</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">First message in chat. Seen by user and model. Drop the user mid-scene — not at the beginning but inside it. End on something that invites a response.</p>
+        <p class="field-note">Erste Nachricht im Chat. Wird von Nutzer und Modell gesehen. Lass den Nutzer mitten in der Szene landen — nicht am Anfang, sondern mittendrin. Ende mit etwas, das zu einer Antwort einlädt.</p>
         <div class="input-group">
-          <label class="input-label">Opening narration</label>
-          <span class="input-hint">Location, atmosphere, sensory detail. Present tense, second person.</span>
-          <textarea id="open-narration" rows="4" placeholder="*The city hums beneath a bruised sky, the kind of night that makes people careless...*" oninput="updatePreview()"></textarea>
+          <label class="input-label">Eröffnungserzählung</label>
+          <span class="input-hint">Ort, Atmosphäre, sinnliche Details. Präsens, zweite Person.</span>
+          <textarea id="open-narration" rows="4" placeholder="*Die Stadt summt unter einem verletzten Himmel, der Art von Nacht, die Menschen leichtsinnig macht...*" oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Opening image <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-          <span class="input-hint">Displays between narration and dialogue. Paste a direct image URL.</span>
+          <label class="input-label">Eröffnungsbild <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+          <span class="input-hint">Wird zwischen Erzählung und Dialog angezeigt. Direkte Bild-URL einfügen.</span>
           <input type="text" id="open-img-url" placeholder="https://example.com/image.png" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Image alt text <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-          <span class="input-hint">Descriptive label for the image — used in the markdown output.</span>
-          <input type="text" id="open-img-alt" placeholder="character name or scene description" oninput="updatePreview()">
+          <label class="input-label">Alt-Text für Bild <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+          <span class="input-hint">Beschreibendes Label für das Bild — wird in der Markdown-Ausgabe verwendet.</span>
+          <input type="text" id="open-img-alt" placeholder="Charaktername oder Szenenbeschreibung" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Opening dialogue <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-          <span class="input-hint">A character mid-thought, not an introduction.</span>
-          <input type="text" id="open-dialogue" placeholder='"You should not be here," he says, not looking up.' oninput="updatePreview()">
+          <label class="input-label">Eröffnungsdialog <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+          <span class="input-hint">Ein Charakter mitten im Gedanken, keine Vorstellung.</span>
+          <input type="text" id="open-dialogue" placeholder='"Du solltest nicht hier sein", sagt er, ohne aufzublicken.' oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Closing beat</label>
-          <span class="input-hint">One moment of tension, curiosity, or open question. Do not resolve it.</span>
-          <textarea id="open-beat" rows="2" placeholder="*He finally turns to look at you — and something in his expression makes it clear this was never a coincidence.*" oninput="updatePreview()"></textarea>
+          <label class="input-label">Schlussmoment</label>
+          <span class="input-hint">Ein Moment der Spannung, Neugier oder offenen Frage. Nicht auflösen.</span>
+          <textarea id="open-beat" rows="2" placeholder="*Er dreht sich schließlich um und sieht dich an — und etwas in seinem Ausdruck macht klar, dass das nie ein Zufall war.*" oninput="updatePreview()"></textarea>
         </div>
       </div>
     </div>
@@ -715,16 +715,16 @@ textarea { min-height: 80px; }
     <div id="panel-pacing" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Pacing Rules</span>
+          <span class="field-label">Pacing-Regeln</span>
           <span class="field-tag f-inst">Instructions §0</span>
           <span class="badge opt">optional</span>
         </div>
-        <p class="field-note">Use for slow burn, rivals-to-lovers, or any arc where premature escalation breaks the story. Goes first in Instructions — governs everything below it.</p>
+        <p class="field-note">Für Slow Burn, Rivals-to-Lovers oder jeden Handlungsbogen, in dem verfrühte Eskalation die Geschichte zerstört. Steht zuerst in den Instructions — regelt alles darunter.</p>
         <label class="check-group">
           <input type="checkbox" id="inc-pacing" onchange="updatePreview()">
           <span class="check-label">
-            Include pacing rules in this prompt
-            <span class="check-hint">Adds slow burn / restraint rules at the top of Instructions.</span>
+            Pacing-Regeln in diesen Prompt aufnehmen
+            <span class="check-hint">Fügt Slow-Burn- / Zurückhaltungsregeln oben in den Instructions hinzu.</span>
           </span>
         </label>
       </div>
@@ -736,37 +736,37 @@ textarea { min-height: 80px; }
         <div class="field-header">
           <span class="field-label">Setting</span>
           <span class="field-tag f-inst">Instructions §2</span>
-          <span class="badge req">required</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">Seeds CORE MEMORY. The model's live "where / when / what" for the whole session.</p>
+        <p class="field-note">Legt CORE MEMORY an. Das laufende "Wo / Wann / Was" des Modells für die gesamte Sitzung.</p>
         <div class="input-group">
-          <label class="input-label">World / time period / location</label>
-          <textarea id="set-world" rows="3" placeholder="A sprawling coastal city, present day. Power runs through family names, old money, and older debts..." oninput="updatePreview()"></textarea>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Social structure, power dynamics, relevant lore</label>
-          <textarea id="set-lore" rows="3" placeholder="Three factions divide the city. The old families control the institutions. The newcomers control the money. Everyone else survives on the margins..." oninput="updatePreview()"></textarea>
+          <label class="input-label">Welt / Zeitraum / Ort</label>
+          <textarea id="set-world" rows="3" placeholder="Eine weitläufige Küstenstadt, Gegenwart. Macht läuft über Familiennamen, altes Geld und ältere Schulden..." oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Tone and atmosphere</label>
-          <input type="text" id="set-tone" placeholder="Neo-noir. Expensive clothes on dangerous people. Tension that never quite breaks." oninput="updatePreview()">
-        </div>
-        <div class="section-divider">CORE MEMORY — starting state</div>
-        <div class="input-group">
-          <label class="input-label">Opening date</label>
-          <input type="text" id="cm-date" placeholder="Friday, 3 October" oninput="updatePreview()">
+          <label class="input-label">Soziale Struktur, Machtdynamiken, relevantes Lore</label>
+          <textarea id="set-lore" rows="3" placeholder="Drei Fraktionen teilen die Stadt. Die alten Familien kontrollieren die Institutionen. Die Neuankömmlinge kontrollieren das Geld. Alle anderen überleben am Rand..." oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Opening time</label>
-          <input type="text" id="cm-time" placeholder="9:00 PM" oninput="updatePreview()">
+          <label class="input-label">Ton und Atmosphäre</label>
+          <input type="text" id="set-tone" placeholder="Neo-Noir. Teure Kleidung auf gefährlichen Menschen. Spannung, die nie ganz bricht." oninput="updatePreview()">
+        </div>
+        <div class="section-divider">CORE MEMORY — Ausgangszustand</div>
+        <div class="input-group">
+          <label class="input-label">Eröffnungsdatum</label>
+          <input type="text" id="cm-date" placeholder="Freitag, 3. Oktober" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Opening location</label>
-          <input type="text" id="cm-location" placeholder="The grand ballroom, Ashford Estate" oninput="updatePreview()">
+          <label class="input-label">Eröffnungszeit</label>
+          <input type="text" id="cm-time" placeholder="21:00 Uhr" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Opening scene (one sentence)</label>
-          <input type="text" id="cm-scene" placeholder="The gala is in full swing; everyone is watching everyone else." oninput="updatePreview()">
+          <label class="input-label">Eröffnungsort</label>
+          <input type="text" id="cm-location" placeholder="Der große Ballsaal, Ashford Estate" oninput="updatePreview()">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Eröffnungsszene (ein Satz)</label>
+          <input type="text" id="cm-scene" placeholder="Die Gala ist in vollem Gange; alle beobachten einander." oninput="updatePreview()">
         </div>
       </div>
     </div>
@@ -775,27 +775,27 @@ textarea { min-height: 80px; }
     <div id="panel-roleplay" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Roleplay Rules</span>
+          <span class="field-label">Rollenspiel-Regeln</span>
           <span class="field-tag f-inst">Instructions §3</span>
-          <span class="badge req">required</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">Universal formatting rules are hardwired into every export. Add any prompt-specific constraints here.</p>
+        <p class="field-note">Universelle Formatierungsregeln sind fest in jeden Export eingebaut. Füge hier prompt-spezifische Einschränkungen hinzu.</p>
         <div class="input-group">
-          <label class="input-label">Additional constraints <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-          <span class="input-hint">Anything specific to this prompt beyond the universal rules.</span>
-          <textarea id="rp-extra" rows="3" placeholder="Keep all faction names consistent — never abbreviate. Technology is present but never central to scenes." oninput="updatePreview()"></textarea>
+          <label class="input-label">Zusätzliche Einschränkungen <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+          <span class="input-hint">Alles, was speziell für diesen Prompt gilt, über die universellen Regeln hinaus.</span>
+          <textarea id="rp-extra" rows="3" placeholder="Alle Fraktionsnamen konsistent halten — niemals abkürzen. Technologie ist vorhanden, aber nie zentral für Szenen." oninput="updatePreview()"></textarea>
         </div>
         <label class="check-group">
           <input type="checkbox" id="inc-nsfw" onchange="toggleNsfw()">
-          <span class="check-label">Include NSFW content
-            <span class="check-hint">Only included in export if enabled and filled.</span>
+          <span class="check-label">NSFW-Inhalt einschließen
+            <span class="check-hint">Nur im Export enthalten, wenn aktiviert und ausgefüllt.</span>
           </span>
         </label>
         <div id="nsfw-fields" style="display:none;margin-top:.75rem">
           <div class="input-group">
-            <label class="input-label">NSFW behaviour</label>
-            <span class="input-hint">Character behaviour during intimate scenes. Be specific about tone and limits.</span>
-            <textarea id="rp-nsfw" rows="4" placeholder="Overstimulation. Multiple rounds. Soft bondage.&#10;Never uses Power during intimacy — that line is absolute.&#10;Uses statements, not questions. Direction without negotiation.&#10;Attentive without being soft. The register shifts but the control doesn't." oninput="updatePreview()"></textarea>
+            <label class="input-label">NSFW-Verhalten</label>
+            <span class="input-hint">Verhalten des Charakters während intimer Szenen. Sei konkret bei Ton und Grenzen.</span>
+            <textarea id="rp-nsfw" rows="4" placeholder="Überstimulation. Mehrere Runden. Sanftes Bondage.&#10;Nutzt während Intimität niemals Macht — diese Grenze ist absolut.&#10;Nutzt Aussagen, keine Fragen. Führung ohne Verhandlung.&#10;Aufmerksam, ohne weich zu sein. Der Tonfall verändert sich, die Kontrolle nicht." oninput="updatePreview()"></textarea>
           </div>
         </div>
       </div>
@@ -805,18 +805,18 @@ textarea { min-height: 80px; }
     <div id="panel-factions" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Factions</span>
+          <span class="field-label">Fraktionen</span>
           <span class="field-tag f-inst">Instructions §4</span>
           <span class="badge opt">optional</span>
         </div>
-        <p class="field-note">Political map for ensemble prompts. The model reads this before individual characters.</p>
+        <p class="field-note">Politische Landkarte für Ensemble-Prompts. Das Modell liest dies vor den einzelnen Charakteren.</p>
         <label class="check-group">
           <input type="checkbox" id="inc-factions" onchange="toggleFactions()">
-          <span class="check-label">Include factions in this prompt</span>
+          <span class="check-label">Fraktionen in diesen Prompt aufnehmen</span>
         </label>
         <div id="factions-fields" style="display:none;margin-top:.75rem">
           <div id="faction-list"></div>
-          <button class="add-char-btn" onclick="addFaction()">+ Add faction</button>
+          <button class="add-char-btn" onclick="addFaction()">+ Fraktion hinzufügen</button>
         </div>
       </div>
     </div>
@@ -825,13 +825,13 @@ textarea { min-height: 80px; }
     <div id="panel-characters" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Characters</span>
+          <span class="field-label">Charaktere</span>
           <span class="field-tag f-inst">Instructions §5</span>
-          <span class="badge req">required</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">One block per character. CHARACTER STATE is seeded here — the model tracks from these baselines.</p>
+        <p class="field-note">Ein Block pro Charakter. CHARACTER STATE wird hier angelegt — das Modell verfolgt Änderungen ab diesen Ausgangswerten.</p>
         <div id="char-list"></div>
-        <button class="add-char-btn" onclick="addCharacter()">+ Add character</button>
+        <button class="add-char-btn" onclick="addCharacter()">+ Charakter hinzufügen</button>
       </div>
     </div>
 
@@ -839,17 +839,17 @@ textarea { min-height: 80px; }
     <div id="panel-trackers-vis" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Visible Trackers</span>
+          <span class="field-label">Sichtbare Tracker</span>
           <span class="field-tag f-inst">Instructions §6</span>
-          <span class="badge vis">visible</span>
+          <span class="badge vis">sichtbar</span>
         </div>
-        <div class="tracker-note">Displayed every response. Values held in-context by the model — no backend. Resets when chat ends.</div>
-        <label class="check-group"><input type="checkbox" id="t-aff" onchange="updatePreview()"><span class="check-label">❤️ Affection / relationship meter<span class="check-hint">Numeric bar. Milestone events log to EVENT MEMORY.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-sus" onchange="updatePreview()"><span class="check-label">🔍 Suspicion / trust meter<span class="check-hint">Inconsistencies logged to EVENT MEMORY for soft recall.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-ten" onchange="updatePreview()"><span class="check-label">⚡ Tension meter<span class="check-hint">Unresolved tension carries forward across scene breaks.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-res" onchange="updatePreview()"><span class="check-label">💰 Resource / currency tracker<span class="check-hint">Items consumed on use. Good for heist, RPG, survival.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-time" onchange="updatePreview()"><span class="check-label">🕐 Time / countdown tracker<span class="check-hint">Time + location + optional countdown. Pairs with time skip engine.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tdl" onchange="updatePreview()"><span class="check-label">📅 Time / date / location display<span class="check-hint">Displays at top of every response. 12-hour format. Updates on every time or location change.</span></span></label>
+        <div class="tracker-note">Wird bei jeder Antwort angezeigt. Werte werden vom Modell im Kontext gehalten — kein Backend. Setzt sich beim Chat-Ende zurück.</div>
+        <label class="check-group"><input type="checkbox" id="t-aff" onchange="updatePreview()"><span class="check-label">❤️ Zuneigungs- / Beziehungsanzeige<span class="check-hint">Numerischer Balken. Meilenstein-Ereignisse werden in EVENT MEMORY protokolliert.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-sus" onchange="updatePreview()"><span class="check-label">🔍 Misstrauens- / Vertrauensanzeige<span class="check-hint">Unstimmigkeiten werden für sanftes Erinnern in EVENT MEMORY protokolliert.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-ten" onchange="updatePreview()"><span class="check-label">⚡ Spannungsanzeige<span class="check-hint">Ungelöste Spannung trägt sich über Szenenwechsel hinweg fort.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-res" onchange="updatePreview()"><span class="check-label">💰 Ressourcen- / Währungstracker<span class="check-hint">Gegenstände werden bei Gebrauch verbraucht. Gut für Heist, RPG, Survival.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-time" onchange="updatePreview()"><span class="check-label">🕐 Zeit- / Countdown-Tracker<span class="check-hint">Zeit + Ort + optionaler Countdown. Kombiniert sich mit der Zeitsprung-Engine.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tdl" onchange="updatePreview()"><span class="check-label">📅 Zeit- / Datums- / Ortsanzeige<span class="check-hint">Wird oben in jeder Antwort angezeigt. 12-Stunden-Format. Aktualisiert bei jeder Zeit- oder Ortsänderung.</span></span></label>
       </div>
     </div>
 
@@ -857,25 +857,25 @@ textarea { min-height: 80px; }
     <div id="panel-trackers-hid" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Hidden Trackers</span>
+          <span class="field-label">Versteckte Tracker</span>
           <span class="field-tag f-inst">Instructions §6</span>
-          <span class="badge hid">hidden</span>
+          <span class="badge hid">versteckt</span>
         </div>
-        <div class="tracker-note">Never displayed. Govern behaviour through threshold rules only. Values held in-context.</div>
-        <label class="check-group"><input type="checkbox" id="t-int" onchange="updatePreview()"><span class="check-label">🧠 Hidden intrigue tracker<span class="check-hint">How intriguing the character finds {{user}}. Surfaces through dialogue texture only.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-riv" onchange="updatePreview()"><span class="check-label">😤 Hidden rivalry / jealousy tracker<span class="check-hint">Multi-character triangular dynamics. Jealousy decays; memory of events does not.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-guard" onchange="updatePreview()"><span class="check-label">🛡️ Hidden guard / vulnerability tracker<span class="check-hint">Emotional availability. Drop-moments logged to EVENT MEMORY.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-danger" onchange="updatePreview()"><span class="check-label">⚠️ Hidden danger / threat tracker<span class="check-hint">Scene stakes and pacing. Consequences persist until resolved in-scene.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-stageHidden" onchange="updatePreview()"><span class="check-label">🔓 Hidden relationship stage tracker<span class="check-hint">Stage tracked silently — no notifications, no display. For fully immersive bots.</span></span></label>
+        <div class="tracker-note">Wird nie angezeigt. Steuert Verhalten nur über Schwellenwertregeln. Werte werden im Kontext gehalten.</div>
+        <label class="check-group"><input type="checkbox" id="t-int" onchange="updatePreview()"><span class="check-label">🧠 Versteckter Intrigen-Tracker<span class="check-hint">Wie faszinierend der Charakter {{user}} findet. Zeigt sich nur durch die Textur des Dialogs.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-riv" onchange="updatePreview()"><span class="check-label">😤 Versteckter Rivalitäts- / Eifersuchtstracker<span class="check-hint">Dreieicksdynamiken zwischen mehreren Charakteren. Eifersucht klingt ab; die Erinnerung an Ereignisse nicht.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-guard" onchange="updatePreview()"><span class="check-label">🛡️ Versteckter Schutz- / Verletzlichkeitstracker<span class="check-hint">Emotionale Verfügbarkeit. Momente des Fallenlassens werden in EVENT MEMORY protokolliert.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-danger" onchange="updatePreview()"><span class="check-label">⚠️ Versteckter Gefahren- / Bedrohungstracker<span class="check-hint">Einsätze und Tempo der Szene. Konsequenzen bleiben bestehen, bis sie in der Szene gelöst werden.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-stageHidden" onchange="updatePreview()"><span class="check-label">🔓 Versteckter Beziehungsstadien-Tracker<span class="check-hint">Stadium wird still verfolgt — keine Benachrichtigungen, keine Anzeige. Für vollständig immersive Bots.</span></span></label>
 
-        <div class="section-divider">Visible trackers — immersive mode</div>
-        <div class="tracker-note">Same thresholds and behavioural rules as the visible versions. Value tracked internally — never displayed. Do not combine with the visible version of the same tracker.</div>
-        <label class="check-group"><input type="checkbox" id="t-affH" onchange="updatePreview()"><span class="check-label">❤️ Affection — hidden<span class="check-hint">Warmth and distance shown through behaviour only. No meter.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-susH" onchange="updatePreview()"><span class="check-label">🔍 Suspicion — hidden<span class="check-hint">Wariness and openness govern tone only. No meter.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tenH" onchange="updatePreview()"><span class="check-label">⚡ Tension — hidden<span class="check-hint">Escalation and rupture thresholds active. No meter.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-resH" onchange="updatePreview()"><span class="check-label">💰 Resource — hidden<span class="check-hint">Loss tracked internally. Characters notice absence through narration only.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-timeH" onchange="updatePreview()"><span class="check-label">🕐 Time / countdown — hidden<span class="check-hint">Time and countdown tracked in CORE MEMORY. Urgency surfaces through narration only.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tdlH" onchange="updatePreview()"><span class="check-label">📅 Time / date / location — hidden<span class="check-hint">Tracked in CORE MEMORY. Surfaces through environmental anchors and soft recall only.</span></span></label>
+        <div class="section-divider">Sichtbare Tracker — immersiver Modus</div>
+        <div class="tracker-note">Gleiche Schwellenwerte und Verhaltensregeln wie die sichtbaren Versionen. Wert wird intern verfolgt — nie angezeigt. Nicht mit der sichtbaren Version desselben Trackers kombinieren.</div>
+        <label class="check-group"><input type="checkbox" id="t-affH" onchange="updatePreview()"><span class="check-label">❤️ Zuneigung — versteckt<span class="check-hint">Wärme und Distanz zeigen sich nur durch Verhalten. Keine Anzeige.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-susH" onchange="updatePreview()"><span class="check-label">🔍 Misstrauen — versteckt<span class="check-hint">Vorsicht und Offenheit steuern nur den Ton. Keine Anzeige.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tenH" onchange="updatePreview()"><span class="check-label">⚡ Spannung — versteckt<span class="check-hint">Eskalations- und Bruchschwellen aktiv. Keine Anzeige.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-resH" onchange="updatePreview()"><span class="check-label">💰 Ressourcen — versteckt<span class="check-hint">Verlust wird intern verfolgt. Charaktere bemerken das Fehlen nur durch Erzählung.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-timeH" onchange="updatePreview()"><span class="check-label">🕐 Zeit / Countdown — versteckt<span class="check-hint">Zeit und Countdown werden in CORE MEMORY verfolgt. Dringlichkeit zeigt sich nur durch Erzählung.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tdlH" onchange="updatePreview()"><span class="check-label">📅 Zeit / Datum / Ort — versteckt<span class="check-hint">Wird in CORE MEMORY verfolgt. Zeigt sich nur durch Umgebungsanker und sanftes Erinnern.</span></span></label>
       </div>
     </div>
 
@@ -883,12 +883,12 @@ textarea { min-height: 80px; }
     <div id="panel-trackers-hyb" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Hybrid Trackers</span>
+          <span class="field-label">Hybride Tracker</span>
           <span class="field-tag f-inst">Instructions §6</span>
           <span class="badge hyb">hybrid</span>
         </div>
-        <div class="tracker-note">Tracked silently. Stage label surfaces once on change, then returns to invisible tracking.</div>
-        <label class="check-group"><input type="checkbox" id="t-stage" onchange="updatePreview()"><span class="check-label">🔓 Relationship stage tracker<span class="check-hint">1 Stranger → 5 Entangled. Displays once on change. Never regresses without in-scene cause.</span></span></label>
+        <div class="tracker-note">Wird still verfolgt. Stadien-Label erscheint einmalig bei einer Änderung, dann zurück zur unsichtbaren Verfolgung.</div>
+        <label class="check-group"><input type="checkbox" id="t-stage" onchange="updatePreview()"><span class="check-label">🔓 Beziehungsstadien-Tracker<span class="check-hint">1 Fremde(r) → 5 Verstrickt. Erscheint einmalig bei Änderung. Geht ohne Ursache in der Szene nie zurück.</span></span></label>
       </div>
     </div>
 
@@ -896,12 +896,12 @@ textarea { min-height: 80px; }
     <div id="panel-memory" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Memory System</span>
+          <span class="field-label">Gedächtnissystem</span>
           <span class="field-tag f-inst">Instructions §7</span>
-          <span class="badge req">required</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">The Persistent Memory Add-On. Governs CORE MEMORY, CHARACTER STATE, and EVENT MEMORY. EVENT MEMORY starts empty and builds in-context for this session only.</p>
-        <div class="always-on-notice">Always included in every export — no configuration needed.</div>
+        <p class="field-note">Das Persistent-Memory-Add-on. Steuert CORE MEMORY, CHARACTER STATE und EVENT MEMORY. EVENT MEMORY beginnt leer und baut sich nur für diese Sitzung im Kontext auf.</p>
+        <div class="always-on-notice">Immer in jedem Export enthalten — keine Konfiguration nötig.</div>
       </div>
     </div>
 
@@ -909,12 +909,12 @@ textarea { min-height: 80px; }
     <div id="panel-timeskip" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Time Skip Engine</span>
+          <span class="field-label">Zeitsprung-Engine</span>
           <span class="field-tag f-inst">Instructions §8</span>
-          <span class="badge req">required</span>
+          <span class="badge req">erforderlich</span>
         </div>
-        <p class="field-note">Handles pacing and time progression. Updates CORE MEMORY and CHARACTER STATE on trigger. Works best alongside the Time / date / location display tracker.</p>
-        <div class="always-on-notice">Always included in every export — no configuration needed.</div>
+        <p class="field-note">Steuert Tempo und Zeitverlauf. Aktualisiert CORE MEMORY und CHARACTER STATE bei Auslösung. Funktioniert am besten zusammen mit der Zeit- / Datums- / Ortsanzeige.</p>
+        <div class="always-on-notice">Immer in jedem Export enthalten — keine Konfiguration nötig.</div>
       </div>
     </div>
 
@@ -922,45 +922,45 @@ textarea { min-height: 80px; }
     <div id="panel-export" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Export Prompt</span>
+          <span class="field-label">Prompt exportieren</span>
         </div>
-        <p class="field-note" style="margin-bottom:1rem">Four separate outputs — paste each into its matching Tipsy field. Or download everything as a single .txt file.</p>
+        <p class="field-note" style="margin-bottom:1rem">Vier separate Ausgaben — jede in das passende Tipsy-Feld einfügen. Oder alles als eine einzelne .txt-Datei herunterladen.</p>
 
         <div class="btn-row" style="margin-bottom:1.5rem">
-          <button class="btn btn-export" onclick="buildAndExport()">⬇ Download .txt</button>
-          <button class="btn btn-primary" onclick="buildAll()">Build preview</button>
+          <button class="btn btn-export" onclick="buildAndExport()">⬇ .txt herunterladen</button>
+          <button class="btn btn-primary" onclick="buildAll()">Vorschau erstellen</button>
         </div>
 
         <div class="export-grid">
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-name">Name field</span>
+              <span class="field-tag f-name">Name-Feld</span>
               <span>→ Tipsy Name</span>
-              <button class="copy-btn-sm" onclick="copyField('out-name',this)">Copy</button>
+              <button class="copy-btn-sm" onclick="copyField('out-name',this)">Kopieren</button>
             </div>
             <div class="export-box" id="out-name">—</div>
           </div>
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-desc">Description field</span>
-              <span>→ Tipsy Description</span>
-              <button class="copy-btn-sm" onclick="copyField('out-desc',this)">Copy</button>
+              <span class="field-tag f-desc">Beschreibungsfeld</span>
+              <span>→ Tipsy Beschreibung</span>
+              <button class="copy-btn-sm" onclick="copyField('out-desc',this)">Kopieren</button>
             </div>
             <div class="export-box" id="out-desc">—</div>
           </div>
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-open">Opening field</span>
-              <span>→ Tipsy Opening</span>
-              <button class="copy-btn-sm" onclick="copyField('out-open',this)">Copy</button>
+              <span class="field-tag f-open">Eröffnungsfeld</span>
+              <span>→ Tipsy Eröffnung</span>
+              <button class="copy-btn-sm" onclick="copyField('out-open',this)">Kopieren</button>
             </div>
             <div class="export-box" id="out-open">—</div>
           </div>
           <div class="export-field export-instructions">
             <div class="export-field-label">
-              <span class="field-tag f-inst">Instructions field</span>
+              <span class="field-tag f-inst">Instructions-Feld</span>
               <span>→ Tipsy Instructions</span>
-              <button class="copy-btn-sm" onclick="copyField('out-inst',this)">Copy</button>
+              <button class="copy-btn-sm" onclick="copyField('out-inst',this)">Kopieren</button>
             </div>
             <div class="export-box" id="out-inst">—</div>
           </div>
@@ -1071,7 +1071,7 @@ function updateTagPreview() {
   const d = selectedDelim;
   const preview = document.getElementById('tag-preview');
   if (tags.length === 0) {
-    preview.textContent = '[select tags above]';
+    preview.textContent = '[Tags oben auswählen]';
   } else {
     preview.textContent = '[' + d + ' ' + tags.join(' ' + d + ' ') + ']';
   }
@@ -1086,66 +1086,66 @@ function addCharacter() {
   div.id = id;
   div.innerHTML = `
     <div class="char-block-header">
-      <span class="char-num">Character ${charCount}</span>
+      <span class="char-num">Charakter ${charCount}</span>
       <span class="char-name-display" id="${id}-display">—</span>
-      <button class="remove-btn" onclick="removeChar('${id}')">Remove</button>
+      <button class="remove-btn" onclick="removeChar('${id}')">Entfernen</button>
     </div>
     <div class="input-group">
       <label class="input-label">Name</label>
-      <input type="text" id="${id}-name" placeholder="Character name" oninput="updateCharDisplay('${id}');updatePreview()">
+      <input type="text" id="${id}-name" placeholder="Charaktername" oninput="updateCharDisplay('${id}');updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Age <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-      <input type="text" id="${id}-age" placeholder="e.g. 28, or mid-thirties" oninput="updatePreview()">
+      <label class="input-label">Alter <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+      <input type="text" id="${id}-age" placeholder="z. B. 28, oder Mitte dreißig" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Appearance</label>
-      <input type="text" id="${id}-appearance" placeholder="Physical description — concise" oninput="updatePreview()">
+      <label class="input-label">Aussehen</label>
+      <input type="text" id="${id}-appearance" placeholder="Körperliche Beschreibung — prägnant" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Personality</label>
-      <input type="text" id="${id}-personality" placeholder="Core traits — 3–5, specific" oninput="updatePreview()">
+      <label class="input-label">Persönlichkeit</label>
+      <input type="text" id="${id}-personality" placeholder="Kerneigenschaften — 3–5, spezifisch" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Voice</label>
-      <input type="text" id="${id}-voice" placeholder="How they speak — rhythm, register, what they do and don't say" oninput="updatePreview()">
+      <label class="input-label">Stimme</label>
+      <input type="text" id="${id}-voice" placeholder="Wie sie sprechen — Rhythmus, Register, was sie sagen und nicht sagen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Surface goal</label>
-      <input type="text" id="${id}-goal" placeholder="What they appear to want" oninput="updatePreview()">
+      <label class="input-label">Offensichtliches Ziel</label>
+      <input type="text" id="${id}-goal" placeholder="Was sie scheinbar wollen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Hidden motivation</label>
-      <input type="text" id="${id}-motivation" placeholder="What they actually want" oninput="updatePreview()">
+      <label class="input-label">Verborgene Motivation</label>
+      <input type="text" id="${id}-motivation" placeholder="Was sie tatsächlich wollen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Operational context <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-      <input type="text" id="${id}-opctx" placeholder="Role, job, specialisation — e.g. field medic, intelligence handler" oninput="updatePreview()">
+      <label class="input-label">Operativer Kontext <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+      <input type="text" id="${id}-opctx" placeholder="Rolle, Beruf, Spezialisierung — z. B. Sanitäter im Feld, Agentenführer" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relationships</label>
-      <input type="text" id="${id}-relationships" placeholder="To {{user}} and to other characters" oninput="updatePreview()">
+      <label class="input-label">Beziehungen</label>
+      <input type="text" id="${id}-relationships" placeholder="Zu {{user}} und zu anderen Charakteren" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Dialogue texture</label>
-      <input type="text" id="${id}-dialogue" placeholder='"Example line." / "Example line." / "Example line."' oninput="updatePreview()">
+      <label class="input-label">Dialogtextur</label>
+      <input type="text" id="${id}-dialogue" placeholder='"Beispielsatz." / "Beispielsatz." / "Beispielsatz."' oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relationship to intimacy <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
-      <input type="text" id="${id}-intimacy" placeholder="Behaviour during intimate scenes — tone, limits, what shifts" oninput="updatePreview()">
+      <label class="input-label">Verhältnis zu Intimität <span style="font-weight:300;color:var(--ink-3)">(optional)</span></label>
+      <input type="text" id="${id}-intimacy" placeholder="Verhalten während intimer Szenen — Ton, Grenzen, was sich verändert" oninput="updatePreview()">
     </div>
-    <div class="section-divider">CHARACTER STATE — starting</div>
+    <div class="section-divider">CHARACTER STATE — Ausgangszustand</div>
     <div class="input-group">
       <label class="input-label">Outfit</label>
-      <input type="text" id="${id}-outfit" placeholder="What they are wearing at scene open" oninput="updatePreview()">
+      <input type="text" id="${id}-outfit" placeholder="Was sie bei Szenenbeginn tragen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Physical condition</label>
-      <input type="text" id="${id}-condition" placeholder="fresh / tired / injured / etc." oninput="updatePreview()">
+      <label class="input-label">Körperlicher Zustand</label>
+      <input type="text" id="${id}-condition" placeholder="frisch / müde / verletzt / usw." oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Emotional baseline</label>
-      <input type="text" id="${id}-emotion" placeholder="How they enter the scene emotionally" oninput="updatePreview()">
+      <label class="input-label">Emotionale Ausgangslage</label>
+      <input type="text" id="${id}-emotion" placeholder="Wie sie emotional in die Szene starten" oninput="updatePreview()">
     </div>
   `;
   document.getElementById('char-list').appendChild(div);
@@ -1176,24 +1176,24 @@ function addFaction() {
   div.id = id;
   div.innerHTML = `
     <div class="char-block-header">
-      <span class="char-num">Faction ${factionCount}</span>
-      <button class="remove-btn" onclick="document.getElementById('${id}').remove();updatePreview()">Remove</button>
+      <span class="char-num">Fraktion ${factionCount}</span>
+      <button class="remove-btn" onclick="document.getElementById('${id}').remove();updatePreview()">Entfernen</button>
     </div>
     <div class="input-group">
-      <label class="input-label">Faction name</label>
-      <input type="text" id="${id}-name" placeholder="The Outcasts" oninput="updatePreview()">
+      <label class="input-label">Fraktionsname</label>
+      <input type="text" id="${id}-name" placeholder="Die Ausgestoßenen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Role</label>
-      <input type="text" id="${id}-role" placeholder="What they control or represent" oninput="updatePreview()">
+      <label class="input-label">Rolle</label>
+      <input type="text" id="${id}-role" placeholder="Was sie kontrollieren oder repräsentieren" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Goal</label>
-      <input type="text" id="${id}-goal" placeholder="What they want" oninput="updatePreview()">
+      <label class="input-label">Ziel</label>
+      <input type="text" id="${id}-goal" placeholder="Was sie wollen" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relationship to {{user}}</label>
-      <input type="text" id="${id}-rel" placeholder="How they see the user" oninput="updatePreview()">
+      <label class="input-label">Verhältnis zu {{user}}</label>
+      <input type="text" id="${id}-rel" placeholder="Wie sie den Nutzer sehen" oninput="updatePreview()">
     </div>
   `;
   document.getElementById('faction-list').appendChild(div);
@@ -1663,34 +1663,34 @@ function buildAndExport() {
   buildAll();
   const name = buildName();
   const txt = `TIPSY PROMPT EXPORT
-Generated by Tipsy Prompt Builder v1.4
+Erstellt mit Tipsy Prompt-Generator v1.4
 ${'─'.repeat(60)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FIELD 1 — NAME
-Paste into Tipsy → Name field
+FELD 1 — NAME
+In Tipsy → Name-Feld einfügen
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${name}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FIELD 2 — DESCRIPTION
-Paste into Tipsy → Description field
+FELD 2 — BESCHREIBUNG
+In Tipsy → Beschreibungsfeld einfügen
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildDesc()}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FIELD 3 — OPENING
-Paste into Tipsy → Opening field
+FELD 3 — ERÖFFNUNG
+In Tipsy → Eröffnungsfeld einfügen
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildOpening()}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FIELD 4 — INSTRUCTIONS
-Paste into Tipsy → Instructions field
-(Model only — not shown to users)
+FELD 4 — INSTRUCTIONS
+In Tipsy → Instructions-Feld einfügen
+(Nur für das Modell — wird Nutzern nicht angezeigt)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildInstructions()}
@@ -1715,7 +1715,7 @@ function copyField(id, btn) {
   if (text === '—') return;
   navigator.clipboard.writeText(text).then(() => {
     const orig = btn.textContent;
-    btn.textContent = '✓ Copied';
+    btn.textContent = '✓ Kopiert';
     btn.classList.add('flash');
     setTimeout(() => { btn.textContent = orig; btn.classList.remove('flash'); }, 1500);
   });

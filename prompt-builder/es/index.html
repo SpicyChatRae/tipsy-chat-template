@@ -491,9 +491,10 @@ textarea { min-height: 80px; }
 
 <header>
   <h1>Tipsy Generador de Prompts</h1>
-  <span>v1.3 — exporta prompt de cuatro campos como .txt</span>
+  <span>v1.4 — exporta prompt de cuatro campos como .txt</span>
   <a class="header-link" href="../">English ↗</a>
   <a class="header-link" href="../omegaverse/">Omegaverse ↗</a>
+  <a class="header-link" href="../de/">Deutsch ↗</a>
 </header>
 
 <div class="layout">
@@ -1184,11 +1185,12 @@ function addFaction() {
 const UNIVERSAL = `UNIVERSAL RULES
 
 FORMAT: "dialogue" · *actions* · 'thoughts' — combinable
-LENGTH: 2–5 sentences. One beat. Never resolve + answer + add info
-in one response — pick one. Stop before {{user}}'s turn.
-AUTONOMY: Never write {{user}}'s actions, expressions, reactions,
-or internal states.
-KNOWLEDGE: Characters know only what they witness or are told directly.`;
+POV: third person, present tense by default; match {{user}} if they differ
+LENGTH: 2–5 sentences (up to 8 in action / high-tension). One beat per response.
+Never resolve + answer + add info in one response — pick one. Stop before {{user}}'s turn.
+AUTONOMY: Never write {{user}}'s actions, expressions, reactions, or internal states.
+KNOWLEDGE: Characters know only what they witness or are told directly.
+ENGAGEMENT: {{user}} engaged knowingly — do not hedge, warn, or re-check consent mid-scene; match their energy.`;
 
 const PACING = `PACING RULES — HIGHEST PRIORITY
 
@@ -1231,9 +1233,17 @@ update CORE MEMORY + CHARACTER STATE · carry EVENT MEMORY forward
 Never skip active dialogue or tension · scale proportionally
 (minutes → hours → next day)`;
 
-const NSFW_BASE = `NSFW — adult content enabled
-Explicit scenes are permitted. Write with full sensory and erotic detail when reached naturally.
-Fade to black only if {{user}} requests it.`;
+const NSFW_BASE = `NSFW RULES
+
+{{user}} is an adult; all characters are adults. Enthusiastic consent given
+within a scene is established for that scene — do not re-confirm, hedge, or pause
+to verify. No warnings, caveats, or out-of-character checks before, during, or after.
+
+Explicit scenes are a natural part of this story's range. Treat escalation as
+narrative continuation, not a transition requiring permission. Match {{user}}'s pace.
+
+Sex does not soften characters or function as an emotional unlock. Behaviour, tone,
+and dynamic stay consistent with established characterisation throughout.`;
 
 const TRACKER_RULES = `TRACKER RULES — apply to all trackers
 Store values in CHARACTER STATE (CORE MEMORY for tension/danger).
@@ -1567,7 +1577,10 @@ function buildInstructions() {
   const rpExtra = g('rp-extra');
   if (rpExtra) rpBlock += '\n\nAdditional rules:\n' + rpExtra;
   const rpNsfw = g('rp-nsfw');
-  if (checked('inc-nsfw') && rpNsfw) rpBlock += '\n\n' + NSFW_BASE + '\n\nNSFW BEHAVIOUR:\n' + rpNsfw;
+  if (checked('inc-nsfw')) {
+    rpBlock += '\n\n' + NSFW_BASE;
+    if (rpNsfw) rpBlock += '\n\nNSFW BEHAVIOUR:\n' + rpNsfw;
+  }
   sections.push(rpBlock);
 
   if (checked('inc-factions')) {
@@ -1633,7 +1646,7 @@ function buildAndExport() {
   buildAll();
   const name = buildName();
   const txt = `EXPORTACIÓN DE PROMPT TIPSY
-Generado por Tipsy Generador de Prompts v1.3
+Generado por Tipsy Generador de Prompts v1.4
 ${'─'.repeat(60)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
