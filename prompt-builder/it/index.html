@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tipsy Generador de Prompts</title>
+<title>Tipsy Generatore di Prompt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Prata&family=Caveat:wght@400;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* Tipsy brand palette */
   --bg:         #251610;
   --bg-deep:    #160e0b;
   --bg-card:    #2f1c14;
@@ -22,6 +23,8 @@
   --muted:      #c8b6a7;
   --border:     rgba(200, 182, 167, 0.18);
   --border-mid: rgba(200, 182, 167, 0.38);
+
+  /* legacy var aliases so inline styles still work */
   --ink:          #f0e7da;
   --ink-2:        #c8b6a7;
   --ink-3:        #9a6a55;
@@ -37,6 +40,7 @@
   --info-light:   rgba(74, 106, 138, 0.15);
   --warn:         #9a7a2a;
   --warn-light:   rgba(154, 122, 42, 0.15);
+
   --radius: 8px;
   --mono:  'Courier New', monospace;
   --sans:  'Nunito', sans-serif;
@@ -68,6 +72,7 @@ header {
 header h1 {
   font-family: 'Caprasimo', cursive;
   font-size: 1.5rem;
+  letter-spacing: 0;
   color: var(--cream);
 }
 header span {
@@ -139,7 +144,11 @@ header span {
   text-align: left;
 }
 .nav-item:hover { background: var(--bg-card); color: var(--cream); }
-.nav-item.active { background: var(--cream); color: var(--bg-deep); font-weight: 700; }
+.nav-item.active {
+  background: var(--cream);
+  color: var(--bg-deep);
+  font-weight: 700;
+}
 .nav-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
@@ -182,7 +191,11 @@ main {
   padding-bottom: .75rem;
   border-bottom: 1px solid var(--border);
 }
-.field-label { font-family: 'Prata', serif; font-size: 1.15rem; color: var(--cream); }
+.field-label {
+  font-family: 'Prata', serif;
+  font-size: 1.15rem;
+  color: var(--cream);
+}
 .field-tag {
   font-size: 11px;
   font-family: var(--sans);
@@ -231,7 +244,10 @@ input[type="text"], textarea {
   resize: vertical;
 }
 input[type="text"]::placeholder, textarea::placeholder { color: var(--secondary); opacity: 0.7; }
-input[type="text"]:focus, textarea:focus { border-color: var(--red); background: #3a1e14; }
+input[type="text"]:focus, textarea:focus {
+  border-color: var(--red);
+  background: #3a1e14;
+}
 textarea { min-height: 80px; }
 
 .tag-builder {
@@ -385,6 +401,7 @@ textarea { min-height: 80px; }
   font-family: 'Caveat', cursive;
   font-size: 16px;
   font-weight: 700;
+  letter-spacing: .02em;
   color: var(--red);
   margin: 1.25rem 0 .6rem;
   display: flex;
@@ -490,148 +507,148 @@ textarea { min-height: 80px; }
 <body>
 
 <header>
-  <h1>Tipsy Generador de Prompts</h1>
-  <span>v1.4 — exporta prompt de cuatro campos como .txt</span>
+  <h1>Tipsy Generatore di Prompt</h1>
+  <span>v1.4 — esporta prompt a quattro campi come .txt</span>
   <a class="header-link" href="../">English ↗</a>
   <a class="header-link" href="../omegaverse/">Omegaverse ↗</a>
+  <a class="header-link" href="../es/">Español ↗</a>
   <a class="header-link" href="../de/">Deutsch ↗</a>
-  <a class="header-link" href="../it/">Italiano ↗</a>
 </header>
 
 <div class="layout">
   <nav class="sidebar">
     <div class="nav-section">
-      <div class="nav-section-label">Campos</div>
+      <div class="nav-section-label">Campi</div>
       <button class="nav-item active" onclick="showPanel('name', this)">
-        <div class="nav-dot"></div> Nombre
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Nome
+        <span class="badge req">obbligatorio</span>
       </button>
       <button class="nav-item" onclick="showPanel('desc', this)">
-        <div class="nav-dot"></div> Descripción
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Descrizione
+        <span class="badge req">obbligatorio</span>
       </button>
       <button class="nav-item" onclick="showPanel('opening', this)">
         <div class="nav-dot"></div> Apertura
-        <span class="badge req">requerido</span>
+        <span class="badge req">obbligatorio</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Instrucciones</div>
+      <div class="nav-section-label">Istruzioni</div>
       <button class="nav-item" onclick="showPanel('pacing', this)">
-        <div class="nav-dot"></div> Reglas de ritmo
-        <span class="badge opt">opcional</span>
+        <div class="nav-dot"></div> Regole di ritmo
+        <span class="badge opt">opzionale</span>
       </button>
       <button class="nav-item" onclick="showPanel('setting', this)">
-        <div class="nav-dot"></div> Escenario
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Ambientazione
+        <span class="badge req">obbligatorio</span>
       </button>
       <button class="nav-item" onclick="showPanel('roleplay', this)">
-        <div class="nav-dot"></div> Reglas de juego de rol
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Regole di roleplay
+        <span class="badge req">obbligatorio</span>
       </button>
       <button class="nav-item" onclick="showPanel('factions', this)">
-        <div class="nav-dot"></div> Facciones
-        <span class="badge opt">opcional</span>
+        <div class="nav-dot"></div> Fazioni
+        <span class="badge opt">opzionale</span>
       </button>
       <button class="nav-item" onclick="showPanel('characters', this)">
-        <div class="nav-dot"></div> Personajes
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Personaggi
+        <span class="badge req">obbligatorio</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Rastreadores</div>
+      <div class="nav-section-label">Tracker</div>
       <button class="nav-item" onclick="showPanel('trackers-vis', this)">
-        <div class="nav-dot"></div> Rastreadores visibles
-        <span class="badge vis">visible</span>
+        <div class="nav-dot"></div> Tracker visibili
+        <span class="badge vis">visibile</span>
       </button>
       <button class="nav-item" onclick="showPanel('trackers-hid', this)">
-        <div class="nav-dot"></div> Rastreadores ocultos
-        <span class="badge hid">oculto</span>
+        <div class="nav-dot"></div> Tracker nascosti
+        <span class="badge hid">nascosto</span>
       </button>
       <button class="nav-item" onclick="showPanel('trackers-hyb', this)">
-        <div class="nav-dot"></div> Rastreadores híbridos
-        <span class="badge hyb">híbrido</span>
+        <div class="nav-dot"></div> Tracker ibridi
+        <span class="badge hyb">ibrido</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Complementos</div>
+      <div class="nav-section-label">Add-on</div>
       <button class="nav-item" onclick="showPanel('memory', this)">
-        <div class="nav-dot"></div> Sistema de memoria
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Sistema di memoria
+        <span class="badge req">obbligatorio</span>
       </button>
       <button class="nav-item" onclick="showPanel('timeskip', this)">
-        <div class="nav-dot"></div> Motor de salto temporal
-        <span class="badge req">requerido</span>
+        <div class="nav-dot"></div> Motore di salto temporale
+        <span class="badge req">obbligatorio</span>
       </button>
     </div>
 
     <div class="nav-section">
-      <div class="nav-section-label">Salida</div>
+      <div class="nav-section-label">Output</div>
       <button class="nav-item" onclick="showPanel('export', this)">
-        <div class="nav-dot"></div> Exportar prompt ↗
+        <div class="nav-dot"></div> Esporta prompt ↗
       </button>
     </div>
   </nav>
 
   <main>
 
-    <!-- NOMBRE -->
+    <!-- NAME -->
     <div id="panel-name" class="panel active">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Nombre</span>
-          <span class="field-tag f-name">Campo de nombre</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Nome</span>
+          <span class="field-tag f-name">Campo nome</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Título publicado. Aparece en la tarjeta de la tienda y el letrero. Corto, específico, buscable. El modelo no lo ve.</p>
+        <p class="field-note">Titolo pubblicato. Appare sulla card dello store e sul nameplate. Breve, specifico, ricercabile. Non visto dal modello.</p>
         <div class="input-group">
-          <label class="input-label">Título del chatbot</label>
-          <input type="text" id="f-name" placeholder="Título" oninput="updatePreview()">
+          <label class="input-label">Titolo del chatbot</label>
+          <input type="text" id="f-name" placeholder="Titolo" oninput="updatePreview()">
         </div>
       </div>
     </div>
 
-    <!-- DESCRIPCIÓN -->
+    <!-- DESCRIPTION -->
     <div id="panel-desc" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Descripción</span>
-          <span class="field-tag f-desc">Campo de descripción</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Descrizione</span>
+          <span class="field-tag f-desc">Campo descrizione</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Aparece en el letrero y antes del mensaje de apertura. Texto gancho + eslogan. Relevante para SEO. El modelo no lo ve.</p>
+        <p class="field-note">Appare sul nameplate e prima del messaggio di apertura. Testo hook + tagline. Rilevante per la SEO. Non visto dal modello.</p>
 
         <div class="input-group">
-          <label class="input-label">Frase gancho</label>
-          <span class="input-hint">El mundo, las apuestas o la dinámica en una línea.</span>
-          <input type="text" id="desc-hook1" placeholder="La ciudad no perdona las deudas — solo espera el momento oportuno para cobrarlas." oninput="updatePreview()">
+          <label class="input-label">Frase hook</label>
+          <span class="input-hint">Il mondo, la posta in gioco o la dinamica in una riga.</span>
+          <input type="text" id="desc-hook1" placeholder="La città non perdona i debiti — aspetta solo il momento giusto per riscuoterli." oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Segunda frase</label>
-          <span class="input-hint">Quién es {{user}} en este mundo, o qué los atrae.</span>
-          <input type="text" id="desc-hook2" placeholder="Acabas de entrar a una sala donde todos ya conocen tu nombre." oninput="updatePreview()">
+          <label class="input-label">Seconda frase</label>
+          <span class="input-hint">Chi è {{user}} in questo mondo, o cosa lo attira dentro.</span>
+          <input type="text" id="desc-hook2" placeholder="Sei appena entrato in una stanza dove tutti conoscono già il tuo nome." oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Tercera frase <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-          <span class="input-hint">La tensión o pregunta alrededor de la cual girará la historia.</span>
-          <input type="text" id="desc-hook3" placeholder="Algunas deudas no se pueden saldar — solo transmitir." oninput="updatePreview()">
+          <label class="input-label">Terza frase <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+          <span class="input-hint">La tensione o la domanda attorno a cui ruoterà la storia.</span>
+          <input type="text" id="desc-hook3" placeholder="Alcuni debiti non si possono saldare — solo trasmettere." oninput="updatePreview()">
         </div>
 
         <div class="input-group">
-          <label class="input-label">Separador de etiquetas</label>
-          <span class="input-hint">Símbolo usado entre etiquetas en el eslogan.</span>
+          <label class="input-label">Delimitatore dei tag</label>
+          <span class="input-hint">Simbolo usato tra i tag nella tagline.</span>
           <div class="delim-picker" id="delim-picker"></div>
         </div>
 
         <div class="input-group">
-          <label class="input-label">Etiquetas</label>
+          <label class="input-label">Tag</label>
           <div class="tag-builder">
             <div class="tag-grid">
               <div>
-                <div class="tag-group-label">Dinámica</div>
+                <div class="tag-group-label">Dinamica</div>
                 <div class="tag-chips" id="tags-dynamic"></div>
               </div>
               <div>
@@ -639,312 +656,312 @@ textarea { min-height: 80px; }
                 <div class="tag-chips" id="tags-tone"></div>
               </div>
               <div>
-                <div class="tag-group-label">Escenario</div>
+                <div class="tag-group-label">Ambientazione</div>
                 <div class="tag-chips" id="tags-setting"></div>
               </div>
               <div>
-                <div class="tag-group-label">Reparto</div>
+                <div class="tag-group-label">Cast</div>
                 <div class="tag-chips" id="tags-cast"></div>
               </div>
               <div style="grid-column:1/-1">
-                <div class="tag-group-label">Trama y Contenido</div>
+                <div class="tag-group-label">Trama e contenuto</div>
                 <div class="tag-chips" id="tags-plot"></div>
               </div>
             </div>
-            <div class="tag-group-label" style="margin-bottom:.3rem">Vista previa</div>
-            <div class="tag-preview" id="tag-preview">[selecciona etiquetas arriba]</div>
+            <div class="tag-group-label" style="margin-bottom:.3rem">Anteprima</div>
+            <div class="tag-preview" id="tag-preview">[seleziona i tag sopra]</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- APERTURA -->
+    <!-- OPENING -->
     <div id="panel-opening" class="panel">
       <div class="field-block">
         <div class="field-header">
           <span class="field-label">Apertura</span>
-          <span class="field-tag f-open">Campo de apertura</span>
-          <span class="badge req">requerido</span>
+          <span class="field-tag f-open">Campo apertura</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Primer mensaje en el chat. Lo ven el usuario y el modelo. Sitúa al usuario en medio de la escena — no al principio, sino dentro de ella. Termina con algo que invite a una respuesta.</p>
+        <p class="field-note">Primo messaggio nella chat. Visto da utente e modello. Fai atterrare l'utente a metà scena — non all'inizio, ma dentro di essa. Concludi con qualcosa che inviti a rispondere.</p>
         <div class="input-group">
-          <label class="input-label">Narración de apertura</label>
-          <span class="input-hint">Ubicación, atmósfera, detalle sensorial. Tiempo presente, segunda persona.</span>
-          <textarea id="open-narration" rows="4" placeholder="*La ciudad zumba bajo un cielo amoratado, el tipo de noche que hace descuidada a la gente...*" oninput="updatePreview()"></textarea>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Imagen de apertura <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-          <span class="input-hint">Se muestra entre la narración y el diálogo. Pega una URL directa de imagen.</span>
-          <input type="text" id="open-img-url" placeholder="https://example.com/imagen.png" oninput="updatePreview()">
+          <label class="input-label">Narrazione di apertura</label>
+          <span class="input-hint">Luogo, atmosfera, dettagli sensoriali. Presente, seconda persona.</span>
+          <textarea id="open-narration" rows="4" placeholder="*La città ronza sotto un cielo livido, il tipo di notte che rende le persone incaute...*" oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Texto alternativo de imagen <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-          <span class="input-hint">Etiqueta descriptiva para la imagen — usada en la salida markdown.</span>
-          <input type="text" id="open-img-alt" placeholder="nombre del personaje o descripción de la escena" oninput="updatePreview()">
+          <label class="input-label">Immagine di apertura <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+          <span class="input-hint">Viene mostrata tra narrazione e dialogo. Incolla un URL diretto dell'immagine.</span>
+          <input type="text" id="open-img-url" placeholder="https://example.com/image.png" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Diálogo de apertura <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-          <span class="input-hint">Un personaje en pleno pensamiento, no una introducción.</span>
-          <input type="text" id="open-dialogue" placeholder='"No deberías estar aquí," dice, sin levantar la vista.' oninput="updatePreview()">
+          <label class="input-label">Testo alternativo immagine <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+          <span class="input-hint">Etichetta descrittiva per l'immagine — usata nell'output markdown.</span>
+          <input type="text" id="open-img-alt" placeholder="nome del personaggio o descrizione della scena" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Momento final</label>
-          <span class="input-hint">Un momento de tensión, curiosidad o pregunta abierta. No lo resuelvas.</span>
-          <textarea id="open-beat" rows="2" placeholder="*Finalmente se gira para mirarte — y algo en su expresión deja claro que esto nunca fue una coincidencia.*" oninput="updatePreview()"></textarea>
+          <label class="input-label">Dialogo di apertura <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+          <span class="input-hint">Un personaggio a metà di un pensiero, non una presentazione.</span>
+          <input type="text" id="open-dialogue" placeholder='"Non dovresti essere qui," dice lui, senza alzare lo sguardo.' oninput="updatePreview()">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Battuta finale</label>
+          <span class="input-hint">Un momento di tensione, curiosità o domanda aperta. Non risolverlo.</span>
+          <textarea id="open-beat" rows="2" placeholder="*Lui finalmente si volta a guardarti — e qualcosa nella sua espressione rende chiaro che non è mai stata una coincidenza.*" oninput="updatePreview()"></textarea>
         </div>
       </div>
     </div>
 
-    <!-- RITMO -->
+    <!-- PACING -->
     <div id="panel-pacing" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Reglas de Ritmo</span>
-          <span class="field-tag f-inst">Instrucciones §0</span>
-          <span class="badge opt">opcional</span>
+          <span class="field-label">Regole di ritmo</span>
+          <span class="field-tag f-inst">Instructions §0</span>
+          <span class="badge opt">opzionale</span>
         </div>
-        <p class="field-note">Úsalo para slow burn, rivales-que-se-enamoran o cualquier arco donde la escalada prematura rompe la historia. Va primero en las Instrucciones — rige todo lo que está debajo.</p>
+        <p class="field-note">Da usare per slow burn, rivals-to-lovers o qualsiasi arco narrativo in cui un'escalation prematura rovina la storia. Va per prima nelle Instructions — governa tutto ciò che segue.</p>
         <label class="check-group">
           <input type="checkbox" id="inc-pacing" onchange="updatePreview()">
           <span class="check-label">
-            Incluir reglas de ritmo en este prompt
-            <span class="check-hint">Agrega reglas de slow burn / contención al inicio de las Instrucciones.</span>
+            Includi le regole di ritmo in questo prompt
+            <span class="check-hint">Aggiunge regole di slow burn / contenimento in cima alle Instructions.</span>
           </span>
         </label>
       </div>
     </div>
 
-    <!-- ESCENARIO -->
+    <!-- SETTING -->
     <div id="panel-setting" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Escenario</span>
-          <span class="field-tag f-inst">Instrucciones §2</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Ambientazione</span>
+          <span class="field-tag f-inst">Instructions §2</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Alimenta la MEMORIA CENTRAL. El "dónde / cuándo / qué" en vivo del modelo para toda la sesión.</p>
+        <p class="field-note">Imposta CORE MEMORY. Il "dove / quando / cosa" del modello, aggiornato per l'intera sessione.</p>
         <div class="input-group">
-          <label class="input-label">Mundo / época / ubicación</label>
-          <textarea id="set-world" rows="3" placeholder="Una vasta ciudad costera, en la actualidad. El poder fluye por nombres de familia, dinero viejo y deudas más antiguas aún..." oninput="updatePreview()"></textarea>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Estructura social, dinámicas de poder, lore relevante</label>
-          <textarea id="set-lore" rows="3" placeholder="Tres facciones dividen la ciudad. Las familias antiguas controlan las instituciones. Los recién llegados controlan el dinero. Los demás sobreviven en los márgenes..." oninput="updatePreview()"></textarea>
+          <label class="input-label">Mondo / periodo storico / luogo</label>
+          <textarea id="set-world" rows="3" placeholder="Una vasta città costiera, giorni nostri. Il potere passa attraverso nomi di famiglia, vecchio denaro e debiti ancora più vecchi..." oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Tono y atmósfera</label>
-          <input type="text" id="set-tone" placeholder="Neo-noir. Ropa cara en gente peligrosa. Tensión que nunca termina de romperse." oninput="updatePreview()">
-        </div>
-        <div class="section-divider">MEMORIA CENTRAL — estado inicial</div>
-        <div class="input-group">
-          <label class="input-label">Fecha inicial</label>
-          <input type="text" id="cm-date" placeholder="Viernes, 3 de octubre" oninput="updatePreview()">
+          <label class="input-label">Struttura sociale, dinamiche di potere, lore rilevante</label>
+          <textarea id="set-lore" rows="3" placeholder="Tre fazioni si dividono la città. Le vecchie famiglie controllano le istituzioni. I nuovi arrivati controllano il denaro. Tutti gli altri sopravvivono ai margini..." oninput="updatePreview()"></textarea>
         </div>
         <div class="input-group">
-          <label class="input-label">Hora inicial</label>
-          <input type="text" id="cm-time" placeholder="9:00 PM" oninput="updatePreview()">
+          <label class="input-label">Tono e atmosfera</label>
+          <input type="text" id="set-tone" placeholder="Neo-noir. Abiti costosi su persone pericolose. Una tensione che non si spezza mai del tutto." oninput="updatePreview()">
+        </div>
+        <div class="section-divider">CORE MEMORY — stato iniziale</div>
+        <div class="input-group">
+          <label class="input-label">Data di apertura</label>
+          <input type="text" id="cm-date" placeholder="Venerdì 3 ottobre" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Ubicación inicial</label>
-          <input type="text" id="cm-location" placeholder="El gran salón de baile, Finca Ashford" oninput="updatePreview()">
+          <label class="input-label">Ora di apertura</label>
+          <input type="text" id="cm-time" placeholder="21:00" oninput="updatePreview()">
         </div>
         <div class="input-group">
-          <label class="input-label">Escena inicial (una oración)</label>
-          <input type="text" id="cm-scene" placeholder="La gala está en pleno apogeo; todos vigilan a todos." oninput="updatePreview()">
+          <label class="input-label">Luogo di apertura</label>
+          <input type="text" id="cm-location" placeholder="Il grande salone da ballo, Ashford Estate" oninput="updatePreview()">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Scena di apertura (una frase)</label>
+          <input type="text" id="cm-scene" placeholder="Il gala è nel pieno; tutti osservano tutti." oninput="updatePreview()">
         </div>
       </div>
     </div>
 
-    <!-- REGLAS DE JUEGO DE ROL -->
+    <!-- ROLEPLAY RULES -->
     <div id="panel-roleplay" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Reglas de Juego de Rol</span>
-          <span class="field-tag f-inst">Instrucciones §3</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Regole di roleplay</span>
+          <span class="field-tag f-inst">Instructions §3</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Las reglas de formato universales están incorporadas en cada exportación. Añade aquí cualquier restricción específica del prompt.</p>
+        <p class="field-note">Le regole di formattazione universali sono incorporate in ogni export. Aggiungi qui eventuali vincoli specifici del prompt.</p>
         <div class="input-group">
-          <label class="input-label">Restricciones adicionales <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-          <span class="input-hint">Cualquier cosa específica de este prompt más allá de las reglas universales.</span>
-          <textarea id="rp-extra" rows="3" placeholder="Mantén todos los nombres de facción consistentes — nunca abrevies. La tecnología está presente pero nunca es central en las escenas." oninput="updatePreview()"></textarea>
+          <label class="input-label">Vincoli aggiuntivi <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+          <span class="input-hint">Qualsiasi cosa specifica per questo prompt, oltre alle regole universali.</span>
+          <textarea id="rp-extra" rows="3" placeholder="Mantieni coerenti tutti i nomi delle fazioni — non abbreviare mai. La tecnologia è presente ma mai centrale nelle scene." oninput="updatePreview()"></textarea>
         </div>
         <label class="check-group">
           <input type="checkbox" id="inc-nsfw" onchange="toggleNsfw()">
-          <span class="check-label">Incluir contenido NSFW
-            <span class="check-hint">Solo se incluye en la exportación si está activado y completado.</span>
+          <span class="check-label">Includi contenuto NSFW
+            <span class="check-hint">Incluso nell'export solo se abilitato e compilato.</span>
           </span>
         </label>
         <div id="nsfw-fields" style="display:none;margin-top:.75rem">
           <div class="input-group">
-            <label class="input-label">Comportamiento NSFW</label>
-            <span class="input-hint">Comportamiento del personaje durante escenas íntimas. Sé específico sobre el tono y los límites.</span>
-            <textarea id="rp-nsfw" rows="4" placeholder="Sobreestimulación. Múltiples rondas. Bondage suave.&#10;Nunca usa el Poder durante la intimidad — esa línea es absoluta.&#10;Usa afirmaciones, no preguntas. Dirección sin negociación.&#10;Atento sin ser blando. El registro cambia pero el control no." oninput="updatePreview()"></textarea>
+            <label class="input-label">Comportamento NSFW</label>
+            <span class="input-hint">Comportamento del personaggio durante le scene intime. Sii specifico su tono e limiti.</span>
+            <textarea id="rp-nsfw" rows="4" placeholder="Sovrastimolazione. Più round. Bondage leggero.&#10;Non usa mai il Potere durante l'intimità — quel limite è assoluto.&#10;Usa affermazioni, non domande. Guida senza negoziazione.&#10;Attento senza essere morbido. Il registro cambia, il controllo no." oninput="updatePreview()"></textarea>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- FACCIONES -->
+    <!-- FACTIONS -->
     <div id="panel-factions" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Facciones</span>
-          <span class="field-tag f-inst">Instrucciones §4</span>
-          <span class="badge opt">opcional</span>
+          <span class="field-label">Fazioni</span>
+          <span class="field-tag f-inst">Instructions §4</span>
+          <span class="badge opt">opzionale</span>
         </div>
-        <p class="field-note">Mapa político para prompts de conjunto. El modelo lee esto antes que los personajes individuales.</p>
+        <p class="field-note">Mappa politica per prompt d'insieme. Il modello legge questo prima dei singoli personaggi.</p>
         <label class="check-group">
           <input type="checkbox" id="inc-factions" onchange="toggleFactions()">
-          <span class="check-label">Incluir facciones en este prompt</span>
+          <span class="check-label">Includi fazioni in questo prompt</span>
         </label>
         <div id="factions-fields" style="display:none;margin-top:.75rem">
           <div id="faction-list"></div>
-          <button class="add-char-btn" onclick="addFaction()">+ Añadir facción</button>
+          <button class="add-char-btn" onclick="addFaction()">+ Aggiungi fazione</button>
         </div>
       </div>
     </div>
 
-    <!-- PERSONAJES -->
+    <!-- CHARACTERS -->
     <div id="panel-characters" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Personajes</span>
-          <span class="field-tag f-inst">Instrucciones §5</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Personaggi</span>
+          <span class="field-tag f-inst">Instructions §5</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Un bloque por personaje. El ESTADO DEL PERSONAJE se establece aquí — el modelo hace seguimiento desde estas bases.</p>
+        <p class="field-note">Un blocco per personaggio. CHARACTER STATE viene impostato qui — il modello traccia le variazioni a partire da questi valori base.</p>
         <div id="char-list"></div>
-        <button class="add-char-btn" onclick="addCharacter()">+ Añadir personaje</button>
+        <button class="add-char-btn" onclick="addCharacter()">+ Aggiungi personaggio</button>
       </div>
     </div>
 
-    <!-- RASTREADORES VISIBLES -->
+    <!-- TRACKERS VISIBLE -->
     <div id="panel-trackers-vis" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Rastreadores Visibles</span>
-          <span class="field-tag f-inst">Instrucciones §6</span>
-          <span class="badge vis">visible</span>
+          <span class="field-label">Tracker visibili</span>
+          <span class="field-tag f-inst">Instructions §6</span>
+          <span class="badge vis">visibile</span>
         </div>
-        <div class="tracker-note">Mostrado en cada respuesta. Valores mantenidos en contexto por el modelo — sin backend. Se reinicia al finalizar el chat.</div>
-        <label class="check-group"><input type="checkbox" id="t-aff" onchange="updatePreview()"><span class="check-label">❤️ Medidor de afecto / relación<span class="check-hint">Barra numérica. Los eventos hito se registran en EVENT MEMORY.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-sus" onchange="updatePreview()"><span class="check-label">🔍 Medidor de sospecha / confianza<span class="check-hint">Las inconsistencias se registran en EVENT MEMORY para recordatorio suave.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-ten" onchange="updatePreview()"><span class="check-label">⚡ Medidor de tensión<span class="check-hint">La tensión no resuelta persiste entre escenas.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-res" onchange="updatePreview()"><span class="check-label">💰 Rastreador de recursos / moneda<span class="check-hint">Los objetos se consumen al usarlos. Ideal para atracos, RPG, supervivencia.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-time" onchange="updatePreview()"><span class="check-label">🕐 Rastreador de tiempo / cuenta regresiva<span class="check-hint">Tiempo + ubicación + cuenta regresiva opcional. Se complementa con el motor de salto temporal.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tdl" onchange="updatePreview()"><span class="check-label">📅 Visualización de tiempo / fecha / ubicación<span class="check-hint">Se muestra al inicio de cada respuesta. Formato de 12 horas. Se actualiza en cada cambio de tiempo o ubicación.</span></span></label>
+        <div class="tracker-note">Mostrato a ogni risposta. Valori mantenuti nel contesto dal modello — nessun backend. Si azzera alla fine della chat.</div>
+        <label class="check-group"><input type="checkbox" id="t-aff" onchange="updatePreview()"><span class="check-label">❤️ Indicatore di affetto / relazione<span class="check-hint">Barra numerica. Gli eventi salienti vengono registrati in EVENT MEMORY.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-sus" onchange="updatePreview()"><span class="check-label">🔍 Indicatore di sospetto / fiducia<span class="check-hint">Le incongruenze vengono registrate in EVENT MEMORY per un richiamo discreto.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-ten" onchange="updatePreview()"><span class="check-label">⚡ Indicatore di tensione<span class="check-hint">La tensione irrisolta si porta avanti oltre i cambi scena.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-res" onchange="updatePreview()"><span class="check-label">💰 Tracker di risorse / valuta<span class="check-hint">Gli oggetti si consumano con l'uso. Ottimo per heist, RPG, survival.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-time" onchange="updatePreview()"><span class="check-label">🕐 Tracker di tempo / countdown<span class="check-hint">Tempo + luogo + countdown opzionale. Si abbina al motore di salto temporale.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tdl" onchange="updatePreview()"><span class="check-label">📅 Display di data / ora / luogo<span class="check-hint">Mostrato in cima a ogni risposta. Formato 12 ore. Aggiornato a ogni cambio di orario o luogo.</span></span></label>
       </div>
     </div>
 
-    <!-- RASTREADORES OCULTOS -->
+    <!-- TRACKERS HIDDEN -->
     <div id="panel-trackers-hid" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Rastreadores Ocultos</span>
-          <span class="field-tag f-inst">Instrucciones §6</span>
-          <span class="badge hid">oculto</span>
+          <span class="field-label">Tracker nascosti</span>
+          <span class="field-tag f-inst">Instructions §6</span>
+          <span class="badge hid">nascosto</span>
         </div>
-        <div class="tracker-note">Nunca se muestran. Gobiernan el comportamiento solo mediante reglas de umbral. Valores mantenidos en contexto.</div>
-        <label class="check-group"><input type="checkbox" id="t-int" onchange="updatePreview()"><span class="check-label">🧠 Rastreador oculto de intriga<span class="check-hint">Cuán intrigante encuentra el personaje a {{user}}. Solo aflora a través de la textura del diálogo.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-riv" onchange="updatePreview()"><span class="check-label">😤 Rastreador oculto de rivalidad / celos<span class="check-hint">Dinámicas triangulares entre varios personajes. Los celos decaen; el recuerdo de los eventos no.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-guard" onchange="updatePreview()"><span class="check-label">🛡️ Rastreador oculto de guardia / vulnerabilidad<span class="check-hint">Disponibilidad emocional. Los momentos de apertura se registran en EVENT MEMORY.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-danger" onchange="updatePreview()"><span class="check-label">⚠️ Rastreador oculto de peligro / amenaza<span class="check-hint">Las apuestas y el ritmo de la escena. Las consecuencias persisten hasta resolverse en escena.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-stageHidden" onchange="updatePreview()"><span class="check-label">🔓 Rastreador oculto de etapa de relación<span class="check-hint">La etapa se rastrea en silencio — sin notificaciones, sin visualización. Para bots completamente inmersivos.</span></span></label>
+        <div class="tracker-note">Mai mostrato. Governa il comportamento solo tramite regole di soglia. Valori mantenuti nel contesto.</div>
+        <label class="check-group"><input type="checkbox" id="t-int" onchange="updatePreview()"><span class="check-label">🧠 Tracker nascosto di intrigo<span class="check-hint">Quanto il personaggio trova {{user}} intrigante. Emerge solo attraverso la texture del dialogo.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-riv" onchange="updatePreview()"><span class="check-label">😤 Tracker nascosto di rivalità / gelosia<span class="check-hint">Dinamiche triangolari multi-personaggio. La gelosia decade; il ricordo degli eventi no.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-guard" onchange="updatePreview()"><span class="check-label">🛡️ Tracker nascosto di difesa / vulnerabilità<span class="check-hint">Disponibilità emotiva. I momenti di abbandono vengono registrati in EVENT MEMORY.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-danger" onchange="updatePreview()"><span class="check-label">⚠️ Tracker nascosto di pericolo / minaccia<span class="check-hint">Posta in gioco e ritmo della scena. Le conseguenze persistono finché non risolte nella scena.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-stageHidden" onchange="updatePreview()"><span class="check-label">🔓 Tracker nascosto di stadio relazionale<span class="check-hint">Stadio tracciato silenziosamente — nessuna notifica, nessuna visualizzazione. Per bot completamente immersivi.</span></span></label>
 
-        <div class="section-divider">Rastreadores visibles — modo inmersivo</div>
-        <div class="tracker-note">Mismos umbrales y reglas de comportamiento que las versiones visibles. Valor rastreado internamente — nunca se muestra. No combinar con la versión visible del mismo rastreador.</div>
-        <label class="check-group"><input type="checkbox" id="t-affH" onchange="updatePreview()"><span class="check-label">❤️ Afecto — oculto<span class="check-hint">Calidez y distancia mostradas solo a través del comportamiento. Sin barra.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-susH" onchange="updatePreview()"><span class="check-label">🔍 Sospecha — oculto<span class="check-hint">El recelo y la apertura gobiernan solo el tono. Sin barra.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tenH" onchange="updatePreview()"><span class="check-label">⚡ Tensión — oculto<span class="check-hint">Umbrales de escalada y ruptura activos. Sin barra.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-resH" onchange="updatePreview()"><span class="check-label">💰 Recursos — oculto<span class="check-hint">La pérdida se rastrea internamente. Los personajes notan la ausencia solo a través de la narración.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-timeH" onchange="updatePreview()"><span class="check-label">🕐 Tiempo / cuenta regresiva — oculto<span class="check-hint">Tiempo y cuenta regresiva rastreados en CORE MEMORY. La urgencia aflora solo a través de la narración.</span></span></label>
-        <label class="check-group"><input type="checkbox" id="t-tdlH" onchange="updatePreview()"><span class="check-label">📅 Tiempo / fecha / ubicación — oculto<span class="check-hint">Rastreado en CORE MEMORY. Aflora solo a través de anclajes ambientales y recordatorio suave.</span></span></label>
+        <div class="section-divider">Tracker visibili — modalità immersiva</div>
+        <div class="tracker-note">Stesse soglie e regole comportamentali delle versioni visibili. Valore tracciato internamente — mai mostrato. Non combinare con la versione visibile dello stesso tracker.</div>
+        <label class="check-group"><input type="checkbox" id="t-affH" onchange="updatePreview()"><span class="check-label">❤️ Affetto — nascosto<span class="check-hint">Calore e distanza mostrati solo attraverso il comportamento. Nessun indicatore.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-susH" onchange="updatePreview()"><span class="check-label">🔍 Sospetto — nascosto<span class="check-hint">Cautela e apertura governano solo il tono. Nessun indicatore.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tenH" onchange="updatePreview()"><span class="check-label">⚡ Tensione — nascosta<span class="check-hint">Soglie di escalation e rottura attive. Nessun indicatore.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-resH" onchange="updatePreview()"><span class="check-label">💰 Risorsa — nascosta<span class="check-hint">Perdita tracciata internamente. I personaggi notano l'assenza solo tramite narrazione.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-timeH" onchange="updatePreview()"><span class="check-label">🕐 Tempo / countdown — nascosto<span class="check-hint">Tempo e countdown tracciati in CORE MEMORY. L'urgenza emerge solo tramite narrazione.</span></span></label>
+        <label class="check-group"><input type="checkbox" id="t-tdlH" onchange="updatePreview()"><span class="check-label">📅 Data / ora / luogo — nascosto<span class="check-hint">Tracciato in CORE MEMORY. Emerge solo tramite ancoraggi ambientali e richiamo discreto.</span></span></label>
       </div>
     </div>
 
-    <!-- RASTREADORES HÍBRIDOS -->
+    <!-- TRACKERS HYBRID -->
     <div id="panel-trackers-hyb" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Rastreadores Híbridos</span>
-          <span class="field-tag f-inst">Instrucciones §6</span>
-          <span class="badge hyb">híbrido</span>
+          <span class="field-label">Tracker ibridi</span>
+          <span class="field-tag f-inst">Instructions §6</span>
+          <span class="badge hyb">ibrido</span>
         </div>
-        <div class="tracker-note">Rastreado en silencio. La etiqueta de etapa aparece una vez al cambiar, luego vuelve al rastreo invisible.</div>
-        <label class="check-group"><input type="checkbox" id="t-stage" onchange="updatePreview()"><span class="check-label">🔓 Rastreador de etapa de relación<span class="check-hint">1 Desconocido → 5 Enredado. Se muestra una vez al cambiar. Nunca retrocede sin causa en escena.</span></span></label>
+        <div class="tracker-note">Tracciato silenziosamente. L'etichetta dello stadio emerge una volta al cambiamento, poi torna al tracciamento invisibile.</div>
+        <label class="check-group"><input type="checkbox" id="t-stage" onchange="updatePreview()"><span class="check-label">🔓 Tracker di stadio relazionale<span class="check-hint">1 Sconosciuto → 5 Coinvolto. Mostrato una volta al cambiamento. Non regredisce mai senza una causa nella scena.</span></span></label>
       </div>
     </div>
 
-    <!-- MEMORIA -->
+    <!-- MEMORY -->
     <div id="panel-memory" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Sistema de Memoria</span>
-          <span class="field-tag f-inst">Instrucciones §7</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Sistema di memoria</span>
+          <span class="field-tag f-inst">Instructions §7</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">El complemento de Memoria Persistente. Rige CORE MEMORY, CHARACTER STATE y EVENT MEMORY. EVENT MEMORY comienza vacía y se construye en contexto solo para esta sesión.</p>
-        <div class="always-on-notice">Siempre incluido en cada exportación — sin configuración necesaria.</div>
+        <p class="field-note">Il Persistent Memory Add-On. Governa CORE MEMORY, CHARACTER STATE ed EVENT MEMORY. EVENT MEMORY parte vuoto e si costruisce nel contesto solo per questa sessione.</p>
+        <div class="always-on-notice">Sempre incluso in ogni export — nessuna configurazione necessaria.</div>
       </div>
     </div>
 
-    <!-- SALTO TEMPORAL -->
+    <!-- TIMESKIP -->
     <div id="panel-timeskip" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Motor de Salto Temporal</span>
-          <span class="field-tag f-inst">Instrucciones §8</span>
-          <span class="badge req">requerido</span>
+          <span class="field-label">Motore di salto temporale</span>
+          <span class="field-tag f-inst">Instructions §8</span>
+          <span class="badge req">obbligatorio</span>
         </div>
-        <p class="field-note">Gestiona el ritmo y la progresión temporal. Actualiza CORE MEMORY y CHARACTER STATE cuando se activa. Funciona mejor junto al rastreador de visualización de tiempo / fecha / ubicación.</p>
-        <div class="always-on-notice">Siempre incluido en cada exportación — sin configuración necesaria.</div>
+        <p class="field-note">Gestisce il ritmo e l'avanzamento del tempo. Aggiorna CORE MEMORY e CHARACTER STATE quando attivato. Funziona meglio insieme al display di data / ora / luogo.</p>
+        <div class="always-on-notice">Sempre incluso in ogni export — nessuna configurazione necessaria.</div>
       </div>
     </div>
 
-    <!-- EXPORTAR -->
+    <!-- EXPORT -->
     <div id="panel-export" class="panel">
       <div class="field-block">
         <div class="field-header">
-          <span class="field-label">Exportar Prompt</span>
+          <span class="field-label">Esporta prompt</span>
         </div>
-        <p class="field-note" style="margin-bottom:1rem">Cuatro salidas separadas — pega cada una en su campo Tipsy correspondiente. O descarga todo como un único archivo .txt.</p>
+        <p class="field-note" style="margin-bottom:1rem">Quattro output separati — incolla ciascuno nel campo Tipsy corrispondente. Oppure scarica tutto come un unico file .txt.</p>
 
         <div class="btn-row" style="margin-bottom:1.5rem">
-          <button class="btn btn-export" onclick="buildAndExport()">⬇ Descargar .txt</button>
-          <button class="btn btn-primary" onclick="buildAll()">Generar vista previa</button>
+          <button class="btn btn-export" onclick="buildAndExport()">⬇ Scarica .txt</button>
+          <button class="btn btn-primary" onclick="buildAll()">Genera anteprima</button>
         </div>
 
         <div class="export-grid">
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-name">Campo de nombre</span>
-              <span>→ Tipsy Nombre</span>
-              <button class="copy-btn-sm" onclick="copyField('out-name',this)">Copiar</button>
+              <span class="field-tag f-name">Campo nome</span>
+              <span>→ Tipsy Nome</span>
+              <button class="copy-btn-sm" onclick="copyField('out-name',this)">Copia</button>
             </div>
             <div class="export-box" id="out-name">—</div>
           </div>
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-desc">Campo de descripción</span>
-              <span>→ Tipsy Descripción</span>
-              <button class="copy-btn-sm" onclick="copyField('out-desc',this)">Copiar</button>
+              <span class="field-tag f-desc">Campo descrizione</span>
+              <span>→ Tipsy Descrizione</span>
+              <button class="copy-btn-sm" onclick="copyField('out-desc',this)">Copia</button>
             </div>
             <div class="export-box" id="out-desc">—</div>
           </div>
           <div class="export-field">
             <div class="export-field-label">
-              <span class="field-tag f-open">Campo de apertura</span>
+              <span class="field-tag f-open">Campo apertura</span>
               <span>→ Tipsy Apertura</span>
-              <button class="copy-btn-sm" onclick="copyField('out-open',this)">Copiar</button>
+              <button class="copy-btn-sm" onclick="copyField('out-open',this)">Copia</button>
             </div>
             <div class="export-box" id="out-open">—</div>
           </div>
           <div class="export-field export-instructions">
             <div class="export-field-label">
-              <span class="field-tag f-inst">Campo de instrucciones</span>
-              <span>→ Tipsy Instrucciones</span>
-              <button class="copy-btn-sm" onclick="copyField('out-inst',this)">Copiar</button>
+              <span class="field-tag f-inst">Campo instructions</span>
+              <span>→ Tipsy Instructions</span>
+              <button class="copy-btn-sm" onclick="copyField('out-inst',this)">Copia</button>
             </div>
             <div class="export-box" id="out-inst">—</div>
           </div>
@@ -1055,7 +1072,7 @@ function updateTagPreview() {
   const d = selectedDelim;
   const preview = document.getElementById('tag-preview');
   if (tags.length === 0) {
-    preview.textContent = '[selecciona etiquetas arriba]';
+    preview.textContent = '[seleziona i tag sopra]';
   } else {
     preview.textContent = '[' + d + ' ' + tags.join(' ' + d + ' ') + ']';
   }
@@ -1070,66 +1087,66 @@ function addCharacter() {
   div.id = id;
   div.innerHTML = `
     <div class="char-block-header">
-      <span class="char-num">Personaje ${charCount}</span>
+      <span class="char-num">Personaggio ${charCount}</span>
       <span class="char-name-display" id="${id}-display">—</span>
-      <button class="remove-btn" onclick="removeChar('${id}')">Eliminar</button>
+      <button class="remove-btn" onclick="removeChar('${id}')">Rimuovi</button>
     </div>
     <div class="input-group">
-      <label class="input-label">Nombre</label>
-      <input type="text" id="${id}-name" placeholder="Nombre del personaje" oninput="updateCharDisplay('${id}');updatePreview()">
+      <label class="input-label">Nome</label>
+      <input type="text" id="${id}-name" placeholder="Nome del personaggio" oninput="updateCharDisplay('${id}');updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Edad <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-      <input type="text" id="${id}-age" placeholder="ej. 28, o treintañero" oninput="updatePreview()">
+      <label class="input-label">Età <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+      <input type="text" id="${id}-age" placeholder="es. 28, o metà trentina" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Apariencia</label>
-      <input type="text" id="${id}-appearance" placeholder="Descripción física — concisa" oninput="updatePreview()">
+      <label class="input-label">Aspetto</label>
+      <input type="text" id="${id}-appearance" placeholder="Descrizione fisica — concisa" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Personalidad</label>
-      <input type="text" id="${id}-personality" placeholder="Rasgos principales — 3–5, específicos" oninput="updatePreview()">
+      <label class="input-label">Personalità</label>
+      <input type="text" id="${id}-personality" placeholder="Tratti principali — 3–5, specifici" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Voz</label>
-      <input type="text" id="${id}-voice" placeholder="Cómo hablan — ritmo, registro, qué dicen y qué no" oninput="updatePreview()">
+      <label class="input-label">Voce</label>
+      <input type="text" id="${id}-voice" placeholder="Come parlano — ritmo, registro, cosa dicono e non dicono" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Objetivo aparente</label>
-      <input type="text" id="${id}-goal" placeholder="Lo que parecen querer" oninput="updatePreview()">
+      <label class="input-label">Obiettivo apparente</label>
+      <input type="text" id="${id}-goal" placeholder="Cosa sembrano volere" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Motivación oculta</label>
-      <input type="text" id="${id}-motivation" placeholder="Lo que realmente quieren" oninput="updatePreview()">
+      <label class="input-label">Motivazione nascosta</label>
+      <input type="text" id="${id}-motivation" placeholder="Cosa vogliono realmente" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Contexto operacional <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-      <input type="text" id="${id}-opctx" placeholder="Rol, trabajo, especialización — ej. médico de campo, agente de inteligencia" oninput="updatePreview()">
+      <label class="input-label">Contesto operativo <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+      <input type="text" id="${id}-opctx" placeholder="Ruolo, lavoro, specializzazione — es. medico da campo, agente di collegamento" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relaciones</label>
-      <input type="text" id="${id}-relationships" placeholder="Con {{user}} y con otros personajes" oninput="updatePreview()">
+      <label class="input-label">Relazioni</label>
+      <input type="text" id="${id}-relationships" placeholder="Con {{user}} e con altri personaggi" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Textura de diálogo</label>
-      <input type="text" id="${id}-dialogue" placeholder='"Frase de ejemplo." / "Frase de ejemplo." / "Frase de ejemplo."' oninput="updatePreview()">
+      <label class="input-label">Texture del dialogo</label>
+      <input type="text" id="${id}-dialogue" placeholder='"Frase di esempio." / "Frase di esempio." / "Frase di esempio."' oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relación con la intimidad <span style="font-weight:300;color:var(--ink-3)">(opcional)</span></label>
-      <input type="text" id="${id}-intimacy" placeholder="Comportamiento durante escenas íntimas — tono, límites, qué cambia" oninput="updatePreview()">
+      <label class="input-label">Rapporto con l'intimità <span style="font-weight:300;color:var(--ink-3)">(opzionale)</span></label>
+      <input type="text" id="${id}-intimacy" placeholder="Comportamento durante le scene intime — tono, limiti, cosa cambia" oninput="updatePreview()">
     </div>
-    <div class="section-divider">CHARACTER STATE — starting</div>
+    <div class="section-divider">CHARACTER STATE — stato iniziale</div>
     <div class="input-group">
-      <label class="input-label">Atuendo</label>
-      <input type="text" id="${id}-outfit" placeholder="Qué llevan puesto al inicio de la escena" oninput="updatePreview()">
-    </div>
-    <div class="input-group">
-      <label class="input-label">Condición física</label>
-      <input type="text" id="${id}-condition" placeholder="fresco / cansado / herido / etc." oninput="updatePreview()">
+      <label class="input-label">Outfit</label>
+      <input type="text" id="${id}-outfit" placeholder="Cosa indossano all'apertura della scena" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Línea emocional base</label>
-      <input type="text" id="${id}-emotion" placeholder="Cómo entran a la escena emocionalmente" oninput="updatePreview()">
+      <label class="input-label">Condizione fisica</label>
+      <input type="text" id="${id}-condition" placeholder="fresco / stanco / ferito / ecc." oninput="updatePreview()">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Stato emotivo di base</label>
+      <input type="text" id="${id}-emotion" placeholder="Come entrano nella scena emotivamente" oninput="updatePreview()">
     </div>
   `;
   document.getElementById('char-list').appendChild(div);
@@ -1160,24 +1177,24 @@ function addFaction() {
   div.id = id;
   div.innerHTML = `
     <div class="char-block-header">
-      <span class="char-num">Facción ${factionCount}</span>
-      <button class="remove-btn" onclick="document.getElementById('${id}').remove();updatePreview()">Eliminar</button>
+      <span class="char-num">Fazione ${factionCount}</span>
+      <button class="remove-btn" onclick="document.getElementById('${id}').remove();updatePreview()">Rimuovi</button>
     </div>
     <div class="input-group">
-      <label class="input-label">Nombre de facción</label>
-      <input type="text" id="${id}-name" placeholder="Los Marginados" oninput="updatePreview()">
+      <label class="input-label">Nome fazione</label>
+      <input type="text" id="${id}-name" placeholder="Gli Emarginati" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Rol</label>
-      <input type="text" id="${id}-role" placeholder="Qué controlan o representan" oninput="updatePreview()">
+      <label class="input-label">Ruolo</label>
+      <input type="text" id="${id}-role" placeholder="Cosa controllano o rappresentano" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Objetivo</label>
-      <input type="text" id="${id}-goal" placeholder="Qué quieren" oninput="updatePreview()">
+      <label class="input-label">Obiettivo</label>
+      <input type="text" id="${id}-goal" placeholder="Cosa vogliono" oninput="updatePreview()">
     </div>
     <div class="input-group">
-      <label class="input-label">Relación con {{user}}</label>
-      <input type="text" id="${id}-rel" placeholder="Cómo ven al usuario" oninput="updatePreview()">
+      <label class="input-label">Rapporto con {{user}}</label>
+      <input type="text" id="${id}-rel" placeholder="Come vedono l'utente" oninput="updatePreview()">
     </div>
   `;
   document.getElementById('faction-list').appendChild(div);
@@ -1646,35 +1663,35 @@ function updatePreview() {
 function buildAndExport() {
   buildAll();
   const name = buildName();
-  const txt = `EXPORTACIÓN DE PROMPT TIPSY
-Generado por Tipsy Generador de Prompts v1.4
+  const txt = `TIPSY PROMPT EXPORT
+Generato con Tipsy Generatore di Prompt v1.4
 ${'─'.repeat(60)}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CAMPO 1 — NOMBRE
-Pega en Tipsy → Campo de nombre
+CAMPO 1 — NOME
+Incolla in Tipsy → Campo nome
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${name}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CAMPO 2 — DESCRIPCIÓN
-Pega en Tipsy → Campo de descripción
+CAMPO 2 — DESCRIZIONE
+Incolla in Tipsy → Campo descrizione
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildDesc()}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CAMPO 3 — APERTURA
-Pega en Tipsy → Campo de apertura
+Incolla in Tipsy → Campo apertura
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildOpening()}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CAMPO 4 — INSTRUCCIONES
-Pega en Tipsy → Campo de instrucciones
-(Solo para el modelo — no se muestra a los usuarios)
+CAMPO 4 — INSTRUCTIONS
+Incolla in Tipsy → Campo instructions
+(Solo per il modello — non mostrato agli utenti)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${buildInstructions()}
@@ -1699,7 +1716,7 @@ function copyField(id, btn) {
   if (text === '—') return;
   navigator.clipboard.writeText(text).then(() => {
     const orig = btn.textContent;
-    btn.textContent = '✓ Copiado';
+    btn.textContent = '✓ Copiato';
     btn.classList.add('flash');
     setTimeout(() => { btn.textContent = orig; btn.classList.remove('flash'); }, 1500);
   });
